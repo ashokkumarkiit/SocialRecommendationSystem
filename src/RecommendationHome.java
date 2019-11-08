@@ -68,7 +68,7 @@ public class RecommendationHome extends HttpServlet {
 			displayRegistration(req, resp, pw, false, arrayListTextSearch);
 
 			// ...code where you write to writer...
-			System.out.println(stringWriter.toString());
+			// System.out.println(stringWriter.toString());
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -90,8 +90,8 @@ public class RecommendationHome extends HttpServlet {
 			}
 
 			// Show it.
-			System.out.println(data);
-			System.out.println(arrayList);
+			// System.out.println(data);
+			// System.out.println(arrayList);
 			return arrayList;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,48 +116,57 @@ public class RecommendationHome extends HttpServlet {
 			pw.println("<div class='post' style='widht:105%;'>	");
 			pw.println(" <table id='place' style='width: 100%;'>");
 			pw.println(" 	<tbody>");
-			pw.println("  		<tr style='height: 300px;width: 100%;border: 2px solid #800000;'>");
+			pw.println("  		<tr style='height: 300px;width: 100%; border: 1px solid #d4d4d4;'>");
 			pw.println("  			<td style='width: auto;'>");
 			pw.println(
-					"   				<div id='cardviewholder' style='height: 300px;margin-left: 20px;width: 95%;margin-right: 20px;'>");
+					"   				<div id='cardviewholder' class='row' style='height: 300px;width: 95%;'>");
 			pw.println(
-					"   					<div id='photoholder' style='width: 250px;height: 260px;background-color: green;vertical-align: middle;margin-left: 20px;margin-top: 20px;float: left;'>");
+					"   					<div class='col-md-3 col-lg-3' id='photoholder' style='vertical-align: middle;margin-left: 20px;margin-top: 20px;float: left;'>");
 			pw.println("                    <img style='width: 250px; height: 260px;' src='" + arrayListTextSearch.get(i).getPhoto_url() + "'>");
 			pw.println(" 					</div>");
 			pw.println(
-					"      			<div id='addresstag' style='width: auto;float:left;margin-top: 20px;width: 580px;font-size: 20px;font-weight: bolder;color: black;margin-left: 30px;height:40px;'>"
-							+ "					Name: " + arrayListTextSearch.get(i).getName() + " </div>");
+					"      					<div class='col-md-5 col-lg-5'><div id='addresstag'>"
+							+ "					" + arrayListTextSearch.get(i).getName() + " </div>");
 			pw.println(
-					"      			<div id='completeaddress' style='width: 580px;float:left;font-size: 16px;color: black;margin-left: 30px;overflow-wrap: break-word;'>");
+					"      					<div id='completeaddress'>");
 			pw.println(
-					"      				<div id='streetaddress' style='width: 580px;float:left;font-size: 16px;color: black;overflow-wrap: break-word;height: 35px;'>"
-							+ "						Street Address: "
-							+ arrayListTextSearch.get(i).getFormatted_address() + "</div>");
+					"      						<div id='streetaddress'>"
+													+ arrayListTextSearch.get(i).getFormatted_address() + "</div>");
 			pw.println(
-					"       				<div id='city' style='width: 580px;float:left;font-size: 16px;color: black;overflow-wrap: break-word;height: 35px;'>"
-							+ "Rating : " + arrayListTextSearch.get(i).getRating() + "</div>");
+					"       					<div id='ratingvalue'>"
+												+ "Rating : " + arrayListTextSearch.get(i).getRating() + "</div>");
+
 			pw.println(
-					"					<div id='country' style='width: 580px;float:left;font-size: 16px;color: black;overflow-wrap: break-word;height: 35px;'>"
+					"							<div id='map2'></div>	<div id='usertotalrating'>"
 							+ "						Users Total Rating : "
-							+ arrayListTextSearch.get(i).getUser_ratings_total() + " </div>  ");
+							+ arrayListTextSearch.get(i).getUser_ratings_total() + " </div></div>  ");
+			
+			pw.print("<div class='row'><div class='col-md-5 col-lg-5' id='viewreview'><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+arrayListTextSearch.get(i).getName()+"'>"+
+					"<input type='hidden' name='streetaddress' value='"+arrayListTextSearch.get(i).getFormatted_address()+"'>"+
+					"<input type='hidden' name='rating' value='"+arrayListTextSearch.get(i).getRating()+"'>"+
+					"<input type='hidden' name='userstotalrating' value='"+arrayListTextSearch.get(i).getUser_ratings_total()+"'>"+
+					"<input type='submit' value='View Review' class='btnreview' ></form></div>");
+			
+			pw.print("<div class='col-md-5 col-lg-5' id='writereview'><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+arrayListTextSearch.get(i).getName()+"'>"+
+					"<input type='hidden' id='streetaddress' name='streetaddress' value='"+arrayListTextSearch.get(i).getFormatted_address()+"'>"+
+					"<input type='hidden' name='lat' id ='lat' value='"+arrayListTextSearch.get(i).getLat()+"'>"+
+					"<input type='hidden' name='lng' id ='lng' value='"+arrayListTextSearch.get(i).getLng()+"'>"+
+					"<input type='hidden' name='rating' value='"+arrayListTextSearch.get(i).getRating()+"'>"+
+					"<input type='hidden' name='userstotalrating' value='"+arrayListTextSearch.get(i).getUser_ratings_total()+"'>"+
+					"<input type='submit' value='Write Review' class='btnreview' ></form></div></div>");
+			
+			
 			pw.println("      			</div>");
 			//pw.println(
 			//		"				<div id='viewreview'><input type='submit' value='View Review' class='btnreview' style='width:160px;background-color: #800000;margin-top: 20px;float: left;margin-left: 65px;height: 40px;font-size: 20px;border: none;'></div>");
 			//pw.println(
 			//		"				<div id='writereview'><input type='submit' value='Write Review' class='btnreview' style='width:160px;margin-top: 20px;float: left;margin-left: 100px;height: 40px;font-size: 20px;background-color: #800000;border: none;'></div>");
 			
-			pw.print("<div id='viewreview'><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+arrayListTextSearch.get(i).getName()+"'>"+
-					"<input type='hidden' name='streetaddress' value='"+arrayListTextSearch.get(i).getFormatted_address()+"'>"+
-					"<input type='hidden' name='rating' value='"+arrayListTextSearch.get(i).getRating()+"'>"+
-					"<input type='hidden' name='userstotalrating' value='"+arrayListTextSearch.get(i).getUser_ratings_total()+"'>"+
-					"<input type='submit' value='View Review' class='btnreview' style='width:160px;background-color: #800000;margin-top: 20px;float: left;margin-left: 65px;height: 40px;font-size: 20px;border: none;' ></form></div>");
-			
-			pw.print("<div id='writereview'><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+arrayListTextSearch.get(i).getName()+"'>"+
-					"<input type='hidden' name='streetaddress' value='"+arrayListTextSearch.get(i).getFormatted_address()+"'>"+
-					"<input type='hidden' name='rating' value='"+arrayListTextSearch.get(i).getRating()+"'>"+
-					"<input type='hidden' name='userstotalrating' value='"+arrayListTextSearch.get(i).getUser_ratings_total()+"'>"+
-					"<input type='submit' value='Write Review' class='btnreview' style='width:160px;margin-top: 20px;float: left;margin-left: 100px;height: 40px;font-size: 20px;background-color: #800000;border: none;' ></form></div>");
-			
+			pw.println(
+					"       				<div class='col-md-2 col-lg-2' id='maps' style='float:left;font-size: 16px;color: black;overflow-wrap:"
+					+ " break-word;height: 35px; margin-top: 15px;'><iframe width='280'  height='270' frameborder='0' style='border:0' "
+					+ "src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAlEI_D1-GlYlaSLlMUPisFfrkrxIfmw-A&zoom=14;&q="+arrayListTextSearch.get(i).getLat()+","+arrayListTextSearch.get(i).getLng()+"' allowfullscreen></iframe></div>");
+
 			
 			pw.println("      		</td>");
 			pw.println("  		</tr>");

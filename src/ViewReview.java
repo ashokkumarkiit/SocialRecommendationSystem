@@ -37,8 +37,8 @@ public class ViewReview extends HttpServlet {
 	String comment = "";	
 	String userid ="";
     utility.printHtml("Header.html");
-    pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-	pw.print("<a style='font-size: 24px;'>Review</a>");
+    pw.print("<div id=''><div class='post'><h2 class='title meta'>");
+	pw.print("<a style='font-size: 24px;'>View Review</a>");
 	pw.print("</h2><div class='entry'>");
 		//if there are no reviews for product print no review else iterate over all the reviews using cursor and print the reviews in a table
 	if(hm==null)

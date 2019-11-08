@@ -65,10 +65,10 @@ public class Utilities extends HttpServlet {
             if (session.getAttribute("userType") != null) {
                 String username = session.getAttribute("userType").toString();
                 username = Character.toUpperCase(username.charAt(0)) + username.substring(1);
-                        result = result +"<li style='background-color: #800000; float: left;border: 1px solid #fff8e7; text-align: center; border-radius: 4px;'><a><span class='glyphicon'>Hello," + username+"</span></a></li>"
-                                + "<li style='background-color: #800000; float: left;  border: 1px solid #fff8e7;text-align: center; border-radius: 4px;'>><a href='Logout'><span class='glyphicon'>Logout</span><div id='latitude' style='display:none'>"+session.getAttribute("latitute")+"</div></a></li>";
+                        result = result +"<li style='margin-top: 5px;'><a><span class='username-style'>Hello," + username+"</span></a></li>"
+                                + "<li class='btnbuy btn-cust-style'><a href='Logout'><span>Logout</span><div id='latitude' style='display:none'>"+session.getAttribute("latitute")+"</div></a></li>";
             } else
-                result = result + "<li style='background-color: #800000; float: left;  border: 1px solid #fff8e7;text-align: center; border-radius: 4px;'><a href='Login' style=''><span class='glyphicon'>Login</span></a></li>";
+                result = result + "<li class='btnbuy btn-cust-style' ><a href='Login' style=''>Login</a></li>";
             result = result + "</ul></div></div><div id='page'>";
             pw.print(result);
         } else

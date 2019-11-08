@@ -173,7 +173,7 @@
 			var txtSearch = document.getElementById('txtSearch').value;
 			if(txtSearch.trim() == "")
 			{
-				document.getElementById('txtSearch').className = 'input-search-validation';
+				document.getElementById('txtSearch').className = 'col-md-8 input-search-validation';
 			}
 			else {
 				if( cust_loc != "" && document.getElementById('manuallatitude') != null 
@@ -195,7 +195,7 @@
 					
 				}*/
 				var res_latlong = latlong.split(",");
-				document.getElementById('txtSearch').className = 'input-search';
+				document.getElementById('txtSearch').className = 'col-md-8 input-search';
 				// Use the dufault location from User Profile
 				request = {
 					latitude : res_latlong[0],
@@ -261,7 +261,10 @@
 						"name" : results[i].name,
 						"rating" : results[i].rating,
 						"user_ratings_total" : results[i].review_count,
-						"photo_url":results[i].image_url
+						"photo_url":results[i].image_url,
+						// "photo_url":results[i].image_url,
+						"lat":results[i].coordinates.latitude,
+						"lng":results[i].coordinates.longitude
 					});
 			  }
 			  callajax(data);
@@ -287,14 +290,14 @@
 		var txtSearch = document.getElementById('txtSearch').value;
 		if(txtSearch.trim() == "")
 		{
-			document.getElementById('txtSearch').className = 'input-search-validation';
+			document.getElementById('txtSearch').className = 'col-md-8 input-search-validation';
 		}
 		else {
 			if( cust_loc != "" && document.getElementById('manuallatitude') != null 
 					&& document.getElementById('manuallatitude').value != "") {
 				latlong = document.getElementById('manuallatitude').value;
 			}
-			document.getElementById('txtSearch').className = 'input-search';
+			document.getElementById('txtSearch').className = 'col-md-8 input-search';
 			
 			var commaPos = latlong.indexOf(',');
 			var coordinatesLat = parseFloat(latlong.substring(0, commaPos));
@@ -346,7 +349,11 @@
 					"name" : place.name,
 					"rating" : place.rating,
 					"user_ratings_total" : place.user_ratings_total,
-					"photo_url": place.photos == null ? '' : place.photos[0].getUrl({maxWidht:300})
+					"photo_url": place.photos == null ? '' : place.photos[0].getUrl({maxWidht:300}),
+					"lat": place.geometry.location.lat(),
+					"lng": place.geometry.location.lng(),
+					"gmap": place.photos == null ? '' : place.photos[0].html_attributions[0],
+					"placeId": place.place_id
 				});
 								
 			}
@@ -499,7 +506,7 @@ function performSearch() {
 	} else 
 	{
 		//By Default Google Search Only
-		alert(document.getElementById("locationenabled").checked);
+		// alert(document.getElementById("locationenabled").checked);
 		initializeSearch(false);
 	}
 }
@@ -512,118 +519,119 @@ function performSearch() {
 	/* float: left; */
 }
 </style>
-<div
-	style='width: 970px; float: left; margin-bottom: 20px; margin-left: 25px; border: 2px solid #535C58; border-radius: 4px;'>
-	<div id='defaultlatitude'></div>
-	<div id='manuallatitude'></div>
-	<!-- Select Basic -->
-	<div class="">
-		<div
-			style="width: 100%; padding-bottom: 25px; padding-left: 60px; padding-top: 20px;">
-			<div style="width: 60%; float: left;">
-				<input type="text" name="txtSearch" id="txtSearch"
-					class="input-search" placeholder="Search here" />
-
+<div>
+	<div class="search-container">
+		<div id='defaultlatitude'></div>
+		<div id='manuallatitude'></div>
+		<!-- Select Basic -->
+		<div class="">
+			<div
+				style="margin-left: 20px; margin-right: 20px; padding-bottom: 25px;"
+				class="row">
+				<!--  <div style="/* width: 60%; float: left; */" class="col-md-8"> -->
+					<input type="text" name="txtSearch" id="txtSearch"
+						class="col-md-8 input-search"  placeholder="Search here" style="margin-right: 10px;" />
+				<!--  </div> -->
+				<!--  <div style="/* width: 30%; float: left */" class="col-md-4">-->
+	
+					<!-- <input type="button"
+						style="style="background-color: #800000; float: left; width: 38%; height: 36px; margin-left: 20px; padding: 12px 20px 0px 20px; text-align: center; border-radius: 4px;""
+						value="Search" id="btnsearch" onclick="initialize();" /> -->
+	
+					<a class="col-md-3 btnbuy btn-cust-style" href="#" onclick="performSearch();"><span style="font-size: 25px;">Search</span></a>
+				<!--  </div> -->
 			</div>
-			<div style="width: 30%; float: left">
-
-				<!-- <input type="button"
-					style="style="background-color: #800000; float: left; width: 38%; height: 36px; margin-left: 20px; padding: 12px 20px 0px 20px; text-align: center; border-radius: 4px;""
-					value="Search" id="btnsearch" onclick="initialize();" /> -->
-
-				<a href="#" style="font-size: 18px; color: #fff; background-color: #800000; cursor: pointer; float: left; width: 38%; height: 36px; margin-left: 20px; padding: 12px 20px 0px 20px; text-align: center; border-radius: 4px;"><span
-					class='glyphicon' onclick="performSearch();">Search</span></a>
+			<div id="map"></div>
+			<!-- <script
+				src="https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyAbgbsd1R1T4yzOzyJrp5uC3YTy1jIWgHg"
+				async defer></script> -->
+	
+			<div
+				class="row" style="padding-top: 20px; padding-left: 10px;padding-right: 10px; border-top: 1px solid #d8d8d8;"
+				style="/* width: 100%; margin-top: 20px; border: 1px solid; height: 70px; padding-left: 8px; margin-left: 58px; margin-right: 80px; border-radius: 4px; float: left; margin-bottom: 18px; */">
+				<input onclick='check();' type='checkbox' name='locationenabled'
+					id='locationenabled' value='locationenabled' 
+					style='float: left; margin-top: 22px; margin-right: 15px;' />
+				<div class="">
+					<div class="col-md-2">
+						<!-- <label class="control-label"
+							style="padding-top: 17px; float: left; font-size: 24px; color: #3d3d3d;"
+							for="select-search">Search On</label> -->
+						<div style="padding-top: 11px;">
+							<select id="select-search-source" name="select-search-source"
+								class="form-control option-style" disabled>
+								<option value="search-source">Select Source</option>
+								<option value="google">Google</option>
+								<option value="yelp">Yelp</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<!--  <label class="control-label"
+							style="padding-top: 17px; float: left; font-size: 24px; color: #3d3d3d;"
+							for="selectbasic">Type</label>-->
+						<div style="padding-top: 11px;">
+							<select id="selectbasic" name="selectbasic" class="form-control option-style" disabled>
+								<option value="select-type" selected>Select Type</option>
+								<option value="amusement_park">Amusement Park</option>
+								<option value="bar">Bar</option>
+								<option value="cafe">Cafe</option>
+								<option value="shopping_mall">Shopping Mall</option>
+								<option value="museum">Museum</option>
+								<option value="night_club">Night Club</option>
+								<option value="restaurant">Restaurant</option>
+								<option value="tourist_attraction">Tourist Attraction</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<!--<label class="distance-label"
+							style="padding-top: 17px; float: left; font-size: 24px; color: #3d3d3d; margin-left: 26px;"
+							for="selectdistance">Distance</label> -->
+						<div style="padding-top: 11px;">
+							<select disabled id="selectdistance" name="selectdistance"
+								class="form-control" >
+								<option value="8000">5 miles</option>
+								<option value="16000">10 miles</option>
+								<option value="32000">20 miles</option>
+								<option value="80000">50 miles</option>
+								<option value="160000">100 miles</option>
+							</select>
+						</div>
+					</div>
+					<div class="">
+						<!--  <div style="float: left; padding-top: 11px;">
+							<label class="control-label"
+								style="padding-left: 30px; font-size: 24px; margin-top: 6px;"
+								for="textinput">Location</label>
+						</div>-->
+						<div style="padding-top: 11px;">
+	
+							<script src="https://cdn.jsdelivr.net/npm/places.js@1.16.6"></script>
+	
+							<script>
+								var placesAutocomplete = places({
+									appId : 'places-recommendation-256419',
+									apiKey : 'AIzaSyAlEI_D1-GlYlaSLlMUPisFfrkrxIfmw-A',
+									container : document.querySelector('#addressinput')
+								});
+							</script>
+							<input disabled type="text" onFocus='geolocate()'
+								style="/* width: 100%; border: 0px; height: 47px; border-radius: 4px; padding-left: 15px; */"
+								class="search-box-location col-md-4"
+								id="addressinput" placeholder="Where are we going?" />
+						</div>
+					</div>
+				</div>
+	
+	
+	
+	
 			</div>
-		</div>
-		<div id="map"></div>
-		<!-- <script
-			src="https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=AIzaSyAbgbsd1R1T4yzOzyJrp5uC3YTy1jIWgHg"
-			async defer></script> -->
-
-		<div
-			style="width: 100%; margin-top: 20px; border: 1px solid; height: 70px; padding-left: 8px; margin-left: 58px; margin-right: 80px; border-radius: 4px; float: left; margin-bottom: 18px;">
-			<input onclick='check();' type='checkbox' name='locationenabled'
-				id='locationenabled' value='locationenabled'
-				style='float: left; margin-top: 30px; margin-right: 10px;' />
-			<div class="row">
-				<div class="col-md-2">
-					<!-- <label class="control-label"
-						style="padding-top: 17px; float: left; font-size: 24px; color: #3d3d3d;"
-						for="select-search">Search On</label> -->
-					<div style="padding-top: 11px;">
-						<select id="select-search-source" name="select-search-source"
-							class="form-control option-style" disabled>
-							<option value="search-source">Select Source</option>
-							<option value="google">Google</option>
-							<option value="yelp">Yelp</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<!--  <label class="control-label"
-						style="padding-top: 17px; float: left; font-size: 24px; color: #3d3d3d;"
-						for="selectbasic">Type</label>-->
-					<div style="padding-top: 11px;">
-						<select id="selectbasic" name="selectbasic" class="form-control option-style" disabled>
-							<option value="select-type" selected>Select Type</option>
-							<option value="amusement_park">Amusement Park</option>
-							<option value="bar">Bar</option>
-							<option value="cafe">Cafe</option>
-							<option value="shopping_mall">Shopping Mall</option>
-							<option value="museum">Museum</option>
-							<option value="night_club">Night Club</option>
-							<option value="restaurant">Restaurant</option>
-							<option value="tourist_attraction">Tourist Attraction</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<!--<label class="distance-label"
-						style="padding-top: 17px; float: left; font-size: 24px; color: #3d3d3d; margin-left: 26px;"
-						for="selectdistance">Distance</label> -->
-					<div style="padding-top: 11px;">
-						<select disabled id="selectdistance" name="selectdistance"
-							class="form-control" >
-							<option value="8000">5 miles</option>
-							<option value="16000">10 miles</option>
-							<option value="32000">20 miles</option>
-							<option value="80000">50 miles</option>
-							<option value="160000">100 miles</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<!--  <div style="float: left; padding-top: 11px;">
-						<label class="control-label"
-							style="padding-left: 30px; font-size: 24px; margin-top: 6px;"
-							for="textinput">Location</label>
-					</div>-->
-					<div style="padding-top: 11px;">
-
-						<script src="https://cdn.jsdelivr.net/npm/places.js@1.16.6"></script>
-
-						<script>
-							var placesAutocomplete = places({
-								appId : 'places-recommendation-256419',
-								apiKey : 'AIzaSyAlEI_D1-GlYlaSLlMUPisFfrkrxIfmw-A',
-								container : document.querySelector('#addressinput')
-							});
-						</script>
-						<input disabled type="text" onFocus='geolocate()'
-							style="width: 100%; border: 0px; height: 47px; border-radius: 4px; padding-left: 15px;"
-							id="addressinput" placeholder="Where are we going?" />
-					</div>
-				</div>
-			</div>
-
-
-
-
 		</div>
 	</div>
+	<div id="ajax-page-response"></div>
 </div>
-<div id="ajax-page-response"></div>
-
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlEI_D1-GlYlaSLlMUPisFfrkrxIfmw-A&libraries=places&callback=initAutocomplete"
 	async defer></script>

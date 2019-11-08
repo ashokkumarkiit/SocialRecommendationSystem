@@ -35,8 +35,8 @@ public class WriteReview extends HttpServlet{
             	utility.printHtml("Header.html");
             	//utility.printHtml("LeftNavigationBar.html");
             	pw.print("<form name = 'WriteReview' action='SubmitRecommendReview' method='post'>");
-            	pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-        		pw.print("<a style='font-size: 24px;'>Review</a>");
+            	pw.print("<div id=''><div class='post'><h2 class='title meta'>");
+        		pw.print("<a style='font-size: 24px;'>Write Review</a>");
         		pw.print("</h2><div class='entry'>");
                 pw.print("<table class='gridtable'>");
         		pw.print("<tr><td>Name: </td><td>");
