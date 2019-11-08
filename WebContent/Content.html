@@ -66,7 +66,7 @@
 							if (status === 'OK') {
 								resultsMap
 										.setCenter(results[0].geometry.location);
-								alert(results[0].geometry.location);
+								// alert(results[0].geometry.location);
 							} else {
 								alert('Geocode was not successful for the following reason: '
 										+ status);
@@ -458,7 +458,7 @@ function performSearch() {
 		var str_distance = distance.options[distance.selectedIndex].value;
 		var str_address = address.value;
 		// alert(source + "," + type +  "," + distance +  "," + address);
-		alert(str_source + "," + str_type +  "," + str_distance +  "," + str_address);
+		// alert(str_source + "," + str_type +  "," + str_distance +  "," + str_address);
 		
 		// Validation of Search Source
 		if(str_source == 'search-source') {

@@ -38,7 +38,7 @@
    	System.out.println(message);	
 	utility.printHtml("Header.html");
 	if(message.equals("Successfull"))
-  	pw.print("<h2>Review for &nbsp"+Name+" Stored </h2>");
+  	pw.print("<div class='review-success-msg'>Review for &nbsp"+Name+" Stored </div>");
 	else
 	pw.print("<h2>Some Problem has occured </h2>");
     

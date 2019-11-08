@@ -89,145 +89,60 @@ public class Registration extends HttpServlet {
 		utility.printHtml("Header.html");
 		pw.println("<script type='text/javascript' src='geocode.js'></script>");
 		pw.print("<div class='post' style='float: left; width: 85%;margin-left: 78px;'>");
-		pw.print("<h2 class='title meta' style='text-align: center;height: auto;'><a style='font-size: 28px;font-weight: bold;color:#800000 !important;'>Registration</a></h2>" + "<div class='entry'>"
-				+ "<div style='margin-left: auto;margin-right: auto;'>");
+		pw.print("<h2 class='title meta' style='text-align: center;height: auto;'><a style='color: #333;font-weight: bolder; font-size: 30px;'>Registration</a></h2>" + "<div class='entry'>"
+				+ "<div style='padding:20px;'>");
 		if (error)
 			pw.print("<h4 style='color:red'>" + error_msg + "</h4>");
 		pw.println(
 				"<script type='text/javascript' src ='geocode.js'>                                                                        ");
 		pw.println("</script>                                                                     ");
 		pw.print("<form method='post' action='Registration'>" + "<table style='width:100%'><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Userid</h3></td><td><input type='text' name='userid' style='border: 1px solid darkgray;box-shadow: none;border-radius: 4px;height: 34px;border-shadow: none;padding-left: 7px;' value='' class='input' required></input>"
+				+ "<div class='reg-form-text-label'>Userid</div></td><td><input type='text' name='userid' value='' class='form-control' required style='margin-bottom: 5px;'></input>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Password</h3></td><td><input type='password' name='password' style='border: 1px solid darkgray;box-shadow: none;border-radius: 4px;height: 34px;border-shadow: none;padding-left: 7px;' value='' class='input' required></input>"
+				+ "<div class='reg-form-text-label'>Password</div></td><td><input type='password' name='password' class='form-control' required style='margin-bottom: 5px;'></input>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Confirm Password</h3></td><td><input type='password' name='repassword' style='border: 1px solid darkgray;box-shadow: none;border-radius: 4px;height: 34px;border-shadow: none;padding-left: 7px;' value='' class='input' required></input>"
+				+ "<div class='reg-form-text-label'>Confirm Password</div></td><td><input type='password' name='repassword' value='' class='form-control' required style='margin-bottom: 5px;'></input>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Email(Username)</h3></td><td><input type='text' style='border: 1px solid darkgray;box-shadow: none;border-radius: 4px;height: 34px;border-shadow: none;padding-left: 7px;' name='email' value='' class='input' required></input>"
+				+ "<div class='reg-form-text-label'>Email(Username)</div></td><td><input type='text' name='email' value='' class='form-control' required style='margin-bottom: 5px;'></input>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Address</h3></td><td style='padding-bottom: 5px;'><input id='autocomplete' placeholder='Enter your address'  onFocus='geolocate()' type='text' class='form-control' style='height: 34px;box-shadow: none;border: 1px solid darkgray;border-radius: 4px;padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>Address</div></td><td style='padding-bottom: 5px;'><input id='autocomplete' placeholder='Enter your address'  onFocus='geolocate()' type='text' class='form-control'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Street No</h3></td><td style='padding-bottom: 5px'><input class='form-control' required id='street_number' name='streetaddress' disabled='true' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>Street No</div></td><td style='padding-bottom: 5px'><input class='form-control' required id='street_number' name='streetaddress' disabled='true'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Street</h3></td><td style='padding-bottom: 5px'><input class='form-control' id='route' disabled='true' name ='aptno' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>Street</div></td><td style='padding-bottom: 5px'><input class='form-control' id='route' disabled='true' name ='aptno'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>City</h3></td><td style='padding-bottom: 5px'><input class='form-control field' id='locality' name ='cityname' disabled='true' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>City</div></td><td style='padding-bottom: 5px'><input class='form-control field' id='locality' name ='cityname' disabled='true'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>State</h3></td><td style='padding-bottom: 5px'><input class='form-control' id='administrative_area_level_1' name ='state' disabled='true' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>State</div></td><td style='padding-bottom: 5px'><input class='form-control' id='administrative_area_level_1' name ='state' disabled='true'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Zipcode</h3></td><td style='padding-bottom: 5px'><input class='form-control' id='postal_code' disabled='true' name ='zipcode' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>Zipcode</div></td><td style='padding-bottom: 5px'><input class='form-control' id='postal_code' disabled='true' name ='zipcode'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Country</h3></td><td style='padding-bottom: 5px'><input class='form-control' id='country' disabled='true' name ='country' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>Country</div></td><td style='padding-bottom: 5px'><input class='form-control' id='country' disabled='true' name ='country'>"
 				+ "</td></tr><tr><td>"
-				+ "<h3 style='color: #000 !important;'>Latlong</h3></td><td style='padding-bottom: 5px'><input class='form-control'  type = 'text' id='longlat' name ='latlong' style='padding: 0px;padding-left: 7px;'>"
+				+ "<div class='reg-form-text-label'>Latlong</div></td><td style='padding-bottom: 5px'><input class='form-control'  type = 'text' id='longlat' name ='latlong'>"
 				+ "</td></tr><tr><td style='padding-top: 20px;padding-bottom: 10px;'>"
-				+ "<h3 style='color: #000 !important;'>Preferance</h3></td><td>"
-				+ "</td></tr><tr><td style='font-size: 18px'>"
-				+ "<input type='checkbox' name='amusement_park' value='amusement_park'>Amusement Park"
+				+ "<div class='reg-form-text-label'>Preferance</div></td><td>"
+				
+				+ "</td></tr><tr><td style='font-size: 17px'>"
+				+ "<input type='checkbox' style='margin-right: 10px;' name='amusement_park' value='amusement_park'>Amusement Park"
 				+ "</td>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='restaurant' value='restaurant'>Restaurant"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='restaurant' value='restaurant'>Restaurant"
 				+ "</td>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='cafe' value='cafe'>Cafe"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='cafe' value='cafe'>Cafe"
 				+ "</td></tr><tr>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='shoping_mall' value='shoping_mall'>Shoping Mall"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='shoping_mall' value='shoping_mall'>Shoping Mall"
 				+ "</td>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='tourist_attraction' value='tourist_attraction'>Tourist Attraction"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='tourist_attraction' value='tourist_attraction'>Tourist Attraction"
 				+ "</td>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='bar' value='bar'>Bar"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='bar' value='bar'>Bar"
 				+ "</td></tr><tr>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='nightclub' value='nightclub'>Night Club"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='nightclub' value='nightclub'>Night Club"
 				+ "</td>"
-				+ "<td style='font-size: 18px'><input type='checkbox' name='museum' value='museum'>Museum"
+				+ "<td style='font-size: 17px'><input type='checkbox' style='margin-right: 10px;' name='museum' value='museum'>Museum"
 				+ "</td></tr></table>"
-				+ "<input type='submit' class='btnbuy' name='ByUser' value='Create User' style='font-size: 20px;margin-top: 10px;margin-left: 320px;float: left;height: 25px;width: 165px;background-color: #800000;'></input>");
+				+ "<div style='margin-top: 20px;'><input type='submit' class='btnbuy btn-cust-style' style='float:none;' name='ByUser' value='Create User'></input></div>");
 		pw.println("<script type='text/javascript' src='geocode.js'></script>");
-		//pw.println("<div class='container'><div class='panel panel-primary'><div class='panel-heading'>");
-		//pw.println(
-		//		"			<h3 class='panel-title'>Address</h3></div><div class='panel-body'><input id='autocomplete' placeholder='Enter your address'");
-		//pw.println(
-		//		"      onFocus='geolocate()' type='text' class='form-control'>                                                                          ");
-		//pw.println(
-		//		"      <br>                                                                                                                             ");
-		//pw.println(
-		//		"   <div id='address'>                                                                                                                  ");
-		//pw.println(
-		//		"      <div class='row'>                                                                                                                ");
-		//pw.println(
-		//		"         <div class='col-md-6'>                                                                                                        ");
-		//pw.println(
-		//		"            <label class='control-label'>Street address</label>                                                                        ");
-		//pw.println(
-		//		"            <input class='form-control' id='street_number' disabled='true'>                                                            ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"         <div class='col-md-6'>                                                                                                        ");
-		//pw.println(
-		//		"            <label class='control-label'>Route</label>                                                                                 ");
-		//pw.println(
-		//		"            <input class='form-control' id='route' disabled='true'>                                                                    ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"      </div>                                                                                                                           ");
-		//		pw.println(
-		//		"      <div class='row'>                                                                                                                ");
-		//pw.println(
-		//		"         <div class='col-md-6'>                                                                                                        ");
-		//pw.println(
-		//		"            <label class='control-label'>City</label>                                                                                  ");
-		//pw.println(
-		//		"            <input class='form-control field' id='locality' disabled='true'>                                                           ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"         <div class='col-md-6'>                                                                                                        ");
-		//pw.println(
-		//		"            <label class='control-label'>State</label>                                                                                 ");
-		//pw.println(
-		//		"            <input class='form-control' id='administrative_area_level_1' disabled='true'>                                              ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"      </div>                                                                                                                           ");
-		//pw.println(
-		//		"      <div class='row'>                                                                                                                ");
-		//pw.println(
-		//		"         <div class='col-md-6'>                                                                                                        ");
-		//pw.println(
-		//		"            <label class='control-label'>Zip code</label>                                                                              ");
-		//pw.println(
-		//		"            <input class='form-control' id='postal_code' disabled='true'>                                                              ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"         <div class='col-md-6'>                                                                                                        ");
-		//pw.println(
-		//		"            <label class='control-label'>Country</label>                                                                               ");
-		//pw.println(
-		//		"            <input class='form-control' id='country' disabled='true'>                                                                  ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"                                                                                                                                       ");
-		//pw.println(
-		//		"          <div class='col-md-6'>                                                                                                       ");
-		//pw.println(
-		//		"            <label class='control-label'>LongLat</label>                                                                               ");
-		//pw.println(
-		//		"            <input class='form-control' id='longlat' disabled='true'>                                                                  ");
-		//pw.println(
-		//		"         </div>                                                                                                                        ");
-		//pw.println(
-		//		"      </div>                                                                                                                           ");
-		//pw.println(
-		//		"   </div>                                                                                                                              ");
-		//pw.println(
-		//		"</div>                                                                                                                                 ");
-		//pw.println(
-		//		"  </div>                                                                                                                               ");
-		//pw.println(
-		//		"</div>                                                                                                                                 ");
+		
 		pw.println(
 				"<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAbgbsd1R1T4yzOzyJrp5uC3YTy1jIWgHg&libraries=places&callback=initAutocomplete' async defer></script> ");
 		pw.println("</form>" + "</div></div></div>");

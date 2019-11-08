@@ -38,12 +38,12 @@ public class WriteReview extends HttpServlet{
             	pw.print("<div id=''><div class='post'><h2 class='title meta'>");
         		pw.print("<a style='font-size: 24px;'>Write Review</a>");
         		pw.print("</h2><div class='entry'>");
-                pw.print("<table class='gridtable'>");
-        		pw.print("<tr><td>Name: </td><td>");
+                pw.print("<table width='100%' class='gridtable'>");
+        		pw.print("<tr><th width='30%'>Name: </th><td>");
         		pw.print(Name);
         		pw.print("<input type='hidden' name='Name' value='"+Name+"'>");
         		pw.print("</td></tr>");
-    	        pw.print("<tr><td> Street Address:</td><td>");
+    	        pw.print("<tr><th width='30%'> Street Address:</th><td>");
                 pw.print(StreetAddress);
                 pw.print("<input type='hidden' name='StreetAddress' value='"+StreetAddress+"'>");
                 pw.print("</td></tr><table>");
@@ -54,9 +54,9 @@ public class WriteReview extends HttpServlet{
 //                pw.print(UserTotalRating);
 //                pw.print("</td></tr><table>");
                 pw.print(" ");
-                pw.print("<table><tr></tr><tr></tr><tr><td> Review Rating: </td>");
+                pw.print("<table><tr></tr><tr></tr><tr><td style='padding:10px;'> Review Rating: </td>");
 				pw.print("<td>");
-				pw.print("<select name='reviewrating'>");
+				pw.print("<select style='width: 30%;' name='reviewrating'>");
 				pw.print("<option value='1' selected>1</option>");
 				pw.print("<option value='2'>2</option>");
 				pw.print("<option value='3'>3</option>");
@@ -64,7 +64,7 @@ public class WriteReview extends HttpServlet{
 				pw.print("<option value='5'>5</option>");  
 			pw.print("</td></tr>");
 			pw.print("<tr>");
-			pw.print("<td> Comment: </td>");
+			pw.print("<td style='padding:10px;'> Comment: </td>");
 			pw.print("<td><textarea name='comment' required rows='4' cols='50'></textarea></td></tr>");
 		pw.print("<tr><td colspan='2'><input type='submit' class='btnbuy' name='SubmitReview' value='SubmitReview'></td></tr></table>");
 

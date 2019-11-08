@@ -50,12 +50,12 @@ public class ViewReview extends HttpServlet {
         if(!hm.containsKey(Name)){
 		pw.println("<h2>There are no reviews for this place.</h2>");
 		}else{
-			pw.println("<h1>Place Name:" + request.getParameter("name") + "</h1>");
-			pw.println("<h4>Street Address:" + request.getParameter("streetaddress") + "</h4>");
+			pw.println("<div class='addresstag'>" + request.getParameter("name") + "</div>");
+			pw.println("<div class='streetaddress'>" + request.getParameter("streetaddress") + "</div>");
 	for (Review r : hm.get(Name)) 
 			 {		
 		
-		pw.print("<table class='gridtable'>");
+		pw.print("<table width='100%' class='gridtable'>");
 		pw.println("<br>");
 //			pw.print("<tr>");
 //			pw.print("<td> Place Name: </td>");
@@ -63,19 +63,19 @@ public class ViewReview extends HttpServlet {
 //			pw.print("<td>" +PlaceName+ "</td>");
 //			pw.print("</tr>");
 			pw.print("<tr>");
-			pw.print("<td> Userid: </td>");
+			pw.print("<th width='40%'> Userid: </th>");
 			userid = r.getUserid();
-			pw.print("<td>" +userid+ "</td>");
+			pw.print("<td width='60%'>" +userid+ "</td>");
 			pw.print("</tr>");
 			pw.print("<tr>");
-			pw.print("<td> Review Rating: </td>");
+			pw.print("<th width='40%'> Review Rating: </th>");
 			reviewRating = r.getReviewRating();
-			pw.print("<td>" +reviewRating+ "</td>");
+			pw.print("<td width='60%'>" +reviewRating+ "</td>");
 			pw.print("</tr>");
 			pw.print("<tr>");
-			pw.print("<td> Reviews: </td>");
+			pw.print("<th width='40%'> Reviews: </th>");
 			comment = r.getComment();
-			pw.print("<td>" +comment+ "</td>");
+			pw.print("<td width='60%'>" +comment+ "</td>");
 			pw.print("</tr>");
 			pw.println("</table>");
 			}					
