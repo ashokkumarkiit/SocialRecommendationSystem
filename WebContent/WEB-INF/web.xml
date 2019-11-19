@@ -12,11 +12,11 @@
         <welcome-file>RecommendationHome</welcome-file>
     </welcome-file-list>
 
-    <servlet>
+   <!-- <servlet>
         <servlet-name>Startup</servlet-name>
         <servlet-class>Startup</servlet-class>
         <load-on-startup>1</load-on-startup>
-    </servlet>
+    </servlet> -->
 
     <!--<servlet-mapping>-->
         <!--<servlet-name>Login</servlet-name>-->
@@ -62,5 +62,8 @@
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
+    <listener>
+		<listener-class>MySessionListener</listener-class>
+	</listener>
 
 </web-app>

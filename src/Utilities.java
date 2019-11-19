@@ -62,8 +62,8 @@ public class Utilities extends HttpServlet {
         //to print the right navigation in header of username cart and logout etc
         if (file.equals("Header.html")) {
             result = result + "<div id='menu' style='float: right;'><ul>";
-            if (session.getAttribute("userType") != null) {
-                String username = session.getAttribute("userType").toString();
+            if (session.getAttribute("username") != null) {
+                String username = session.getAttribute("username").toString();
                 username = Character.toUpperCase(username.charAt(0)) + username.substring(1);
                         result = result +"<li style='margin-top: 5px;'><a><span class='username-style'>Hello," + username+"</span></a></li>"
                                 + "<li class='btnbuy btn-cust-style'><a href='Logout'><span>Logout</span><div id='latitude' style='display:none'>"+session.getAttribute("latitute")+"</div></a></li>";
@@ -132,9 +132,20 @@ public class Utilities extends HttpServlet {
         return session.getAttribute("username") != null;
     }
     
+    public String username(){
+		if (session.getAttribute("username")!=null)
+			return session.getAttribute("username").toString();
+		return null;
+	}
     
-    public String storeReview(String name,String streetaddress,String reviewrating,String comment){
-    	String message=MySQLDataStoreUtilities.insertReview(name,streetaddress,reviewrating,comment,session.getAttribute("userid").toString());
+    
+    public String storeReview(String name,String streetaddress,String reviewrating,String comment,
+    		String internetRating, String userTotalRating, String photoURL,
+    		String lat, String lng){
+    	String message=MySQLDataStoreUtilities.insertReview(name,streetaddress,reviewrating,comment,
+    			session.getAttribute("userid").toString(),
+    			internetRating, userTotalRating, photoURL,
+    			lat,lng);
     	if(!message.equals("Successfull"))
 		{ return "UnSuccessfull";
 		}

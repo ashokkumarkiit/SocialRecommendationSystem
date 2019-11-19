@@ -31,6 +31,7 @@ public class Registration extends HttpServlet {
 		String password = request.getParameter("password");
 		String repassword = request.getParameter("repassword");
 		String email = request.getParameter("email");
+		String userType = request.getParameter("usertype");
 		String streetaddress = request.getParameter("streetaddress");
 		String aptno = request.getParameter("aptno");
 		streetaddress= streetaddress.concat(" "+aptno);
@@ -60,7 +61,7 @@ public class Registration extends HttpServlet {
 				User user = new User(userid, password, usertype);
 				hm.put(userid, user);
 				if (MySQLDataStoreUtilities.insertUser(userid,   email,preference,password, repassword, streetaddress,
-						cityname,state,zipcode,country,latlong)) {
+						cityname,state,zipcode,country,latlong,userType)) {
 					HttpSession session = request.getSession(true);
 					session.setAttribute("login_msg", "Your " + usertype + " account has been created. Please login");
 					
@@ -104,6 +105,8 @@ public class Registration extends HttpServlet {
 				+ "<div class='reg-form-text-label'>Confirm Password</div></td><td><input type='password' name='repassword' value='' class='form-control' required style='margin-bottom: 5px;'></input>"
 				+ "</td></tr><tr><td>"
 				+ "<div class='reg-form-text-label'>Email(Username)</div></td><td><input type='text' name='email' value='' class='form-control' required style='margin-bottom: 5px;'></input>"
+				+ "</td></tr><tr><td>"
+				+ "<div class='reg-form-text-label'>User Type</div></td><td><select name='usertype' class='form-control' style='margin-bottom: 5px; width: 107%;'><option value='user' selected>User</option><option value='admin'>Admin</option></select>"
 				+ "</td></tr><tr><td>"
 				+ "<div class='reg-form-text-label'>Address</div></td><td style='padding-bottom: 5px;'><input id='autocomplete' placeholder='Enter your address'  onFocus='geolocate()' type='text' class='form-control'>"
 				+ "</td></tr><tr><td>"
