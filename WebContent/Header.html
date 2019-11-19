@@ -55,14 +55,6 @@
 	}
 </script>
 
-<!--<script type="text/javascript">-->
-<!--onload = function() {-->
-<!--document.getElementById("catalog").selectedIndex = 1;-->
-<!--}-->
-<!--</script>-->
-
-<!-- Added by vinit for autocomplete places-->
-
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.16.6"></script>
 <script>
 	var placesAutocomplete = places({
@@ -77,11 +69,6 @@
 				+ itemName;
 		document.getElementById('CartForm').submit();
 	}
-
-	// function removeCart(itemName) {
-	//
-	//     location.href = "${pageContext.request.contextPath}/RemoveCart?itemName=" + itemName;
-	// }
 </script>
 <style>
 * {
@@ -93,26 +80,23 @@
 }
 </style>
 </head>
-<body
-	class="body-main"
-	style='/* margin: 0px !important; padding: 0 !important; background: #fff8e7 !important; font-family: Georgia, "Times New Roman", Times, serif; font-size: 12px !important; */'>
-	<!--<script type="text/javascript" src="autocomplete.js"></script>-->
-	<!-- Start #logo top content of the webpage-->
+<body class="body-main">
 	<div style="background: #bbbbbb5e; height: 100vh;">
-	<div id="logo" style="height: auto !important;">
-		<fieldset>
-			<!-- Form Name -->
-			<a href="/SocialRecommendationSystem">
-				<legend
-					style="border-bottom: 0px; padding-bottom: 25px; width: 57%; float: left">
-					<div class="header-text"><span style="border-bottom: 5px solid; font-size: 35px;">Social Recommendation</span></div>
-					<div style="color: white; font-weight: 600; font-style: italic; font-size: 15px;">** Recommends social places **</div>
-				</legend>
-				<div id='menu' style='float: right;'>
-					<ul>
-	
-						<!-- 	<li style='background-color: #800000;border: 1px solid #fff8e7;'><a href='Login'><span class='glyphicon'>Login</span></a></li>
-	x					 -->
-					</ul>
-				</div>
-			</a>
+		<div id="logo" style="height: auto !important;">
+			<fieldset>
+				<!-- Form Name -->
+				<a href="/SocialRecommendationSystem"> <legend
+						style="border-bottom: 0px; padding-bottom: 25px; width: 57%; float: left">
+						<div class="header-text">
+							<span style="border-bottom: 5px solid; font-size: 35px;">Social
+								Recommendation</span>
+						</div>
+						<div
+							style="color: white; font-weight: 600; font-style: italic; font-size: 15px;">**
+							Recommends social places **</div>
+					</legend>
+					<div id='menu' style='float: right;'>
+						<ul>
+						</ul>
+					</div>
+				</a>

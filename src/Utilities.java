@@ -74,13 +74,6 @@ public class Utilities extends HttpServlet {
         } else
             pw.print(result);
     }
-   /* public int CartCount() {
-        if (isLoggedin())
-            return getCustomerOrders().size();
-        return 0;
-    }
-*/
-    /*  getFullURL Function - Reconstructs the URL user request  */
 
     public String getFullURL() {
         String scheme = req.getScheme();

@@ -26,9 +26,6 @@ public class RecommendationHome extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// response.setContentType("text/html");
-		// PrintWriter pw = response.getWriter();
-		// displayRegistration(request, response, pw, false);
 		this.session = request.getSession(true);
 		if (session.getAttribute("username") == null) {
 			Cookie[] cookies = request.getCookies();
@@ -69,8 +66,6 @@ public class RecommendationHome extends HttpServlet {
 		json = value;
 		ArrayList<TextSearch> arrayListTextSearch = parseJsonTextSearchData(json);
 
-		// displayRegistration(request, response, pw, false, arrayListTextSearch);
-
 		writeAjaxResponse(request, response, "Feedback received succesfully!", arrayListTextSearch);
 	}
 
@@ -84,9 +79,6 @@ public class RecommendationHome extends HttpServlet {
 			PrintWriter pw = new PrintWriter(stringWriter);
 			displayRegistration(req, resp, pw, false, arrayListTextSearch);
 
-			// ...code where you write to writer...
-			// System.out.println(stringWriter.toString());
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -98,23 +90,17 @@ public class RecommendationHome extends HttpServlet {
 	protected ArrayList<TextSearch> parseJsonTextSearchData(String jsonResponse) {
 
 		try {
-			// TextSearchList data = new Gson().fromJson(jsonResponse,
-			// TextSearchList.class);
 			TextSearch[] data = new Gson().fromJson(jsonResponse, TextSearch[].class);
 			ArrayList<TextSearch> arrayList = new ArrayList<TextSearch>();
 			for (int i = 0; i < data.length; i++) {
 				arrayList.add(data[i]);
 			}
 
-			// Show it.
-			// System.out.println(data);
-			// System.out.println(arrayList);
 			return arrayList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		// Now do the magic.
 
 	}
 
@@ -122,8 +108,6 @@ public class RecommendationHome extends HttpServlet {
 			boolean error, ArrayList<TextSearch> arrayListTextSearch) throws ServletException, IOException {
 
 		Utilities utility = new Utilities(request, pw);
-		// utility.printHtml("Header.html");
-		// utility.printHtml("Content.html");
 		if (error)
 			pw.print("<h4 style='color:red'>" + error_msg + "</h4>");
 
@@ -176,16 +160,7 @@ public class RecommendationHome extends HttpServlet {
 					+ "<input type='submit' value='Write Review' class='btnreview' ></form></div></div>");
 
 			pw.println("      			</div>");
-			// pw.println(
-			// " <div id='viewreview'><input type='submit' value='View Review'
-			// class='btnreview' style='width:160px;background-color: #800000;margin-top:
-			// 20px;float: left;margin-left: 65px;height: 40px;font-size: 20px;border:
-			// none;'></div>");
-			// pw.println(
-			// " <div id='writereview'><input type='submit' value='Write Review'
-			// class='btnreview' style='width:160px;margin-top: 20px;float:
-			// left;margin-left: 100px;height: 40px;font-size: 20px;background-color:
-			// #800000;border: none;'></div>");
+
 
 			pw.println(
 					"       				<div class='col-md-2 col-lg-2' id='maps' style='float:left;font-size: 16px;color: black;overflow-wrap:"

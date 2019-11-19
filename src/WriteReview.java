@@ -55,12 +55,6 @@ public class WriteReview extends HttpServlet{
                 pw.print("<input type='hidden' name='lat' value='"+latitude+"'>");
                 pw.print("<input type='hidden' name='lng' value='"+longitude+"'>");
                 pw.print("</td></tr><table>");
-//        		pw.print("<tr><td> Rating:</td><td>");
-//                pw.print(Rating);
-//                pw.print("</td></tr>");
-//        		pw.print("<tr><td> User Total Rating:</td><td>");
-//                pw.print(UserTotalRating);
-//                pw.print("</td></tr><table>");
                 pw.print(" ");
                 pw.print("<table><tr></tr><tr></tr><tr><td style='padding:10px;'> Review Rating: </td>");
 				pw.print("<td>");

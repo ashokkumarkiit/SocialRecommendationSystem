@@ -10,9 +10,6 @@ public class MySessionListener implements HttpSessionListener {
 	public void sessionCreated(HttpSessionEvent se) {
 		// TODO Auto-generated method stub
 		System.out.println("-- HttpSessionListener#sessionCreated invoked --");
-		// HttpSession session = se.getSession();
-		// System.out.println("session id: " + session.getId());
-		// session.setMaxInactiveInterval(5);// in seconds
 	}
 
 	@Override

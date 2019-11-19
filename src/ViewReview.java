@@ -57,11 +57,6 @@ public class ViewReview extends HttpServlet {
 		
 		pw.print("<table width='100%' class='gridtable'>");
 		pw.println("<br>");
-//			pw.print("<tr>");
-//			pw.print("<td> Place Name: </td>");
-//			PlaceName = r.getName();
-//			pw.print("<td>" +PlaceName+ "</td>");
-//			pw.print("</tr>");
 			pw.print("<tr>");
 			pw.print("<th width='40%'> Userid: </th>");
 			userid = r.getUserid();

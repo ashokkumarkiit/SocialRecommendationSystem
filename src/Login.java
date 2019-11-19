@@ -19,7 +19,6 @@ public class Login extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		// String userType = request.getParameter("username");
 
 		HashMap<String, User> hm = new HashMap<String, User>();
 		try {

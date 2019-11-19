@@ -18,15 +18,9 @@ function callMaps()
 
 	var street = document.getElementById("streetaddress").value;
 	alert(street);
-	/*url ="https://maps.googleapis.com/maps/api/staticmap?zoom=15&maptype=roadmap" +
-			"&size=600x300&markers=color:red%7Clabel:C%7C"+lat+","+lng+"&key=AIzaSyAbgbsd1R1T4yzOzyJrp5uC3YTy1jIWgHg";
-	
-	window.open(url,"_open");
-	*/
 
 	var iframe = '<iframe width="300"  height="50" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAbgbsd1R1T4yzOzyJrp5uC3YTy1jIWgHg &q=place_id:ChIJs--MqP1YwokRBwAhjXWIHn8 " allowfullscreen></iframe>';
 	document.getElementById('map2').innerHTML = iframe;
-	//alert(iframe);
 }
 
 
