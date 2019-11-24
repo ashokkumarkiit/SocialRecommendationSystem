@@ -41,12 +41,12 @@ public class AdminHome extends HttpServlet {
 			pw.print("<div id=''><div class='post'><h2 class='title meta'>");
 			pw.print("<a style='font-size: 24px;'>Admin</a>");
 			pw.print("</h2><div class='entry'>");
-			pw.print("<div>"+ source +"</div>");
+			pw.print("<div style='padding: 10px; font-size: 25px; color: green;'> Current Recommendation Source - "+ source +"</div>");
 			pw.print("<table style='width:100%'>");
 			String val_python = "/SocialRecommendationSystem/AdminHome?type=surprise&operation=changesource";
 			String val_recombee = "/SocialRecommendationSystem/AdminHome?type=recombee&operation=changesource";
-			pw.print("<td><a href="+ val_python +">Use Surprise</a></td>");
-			pw.print("<td><a href="+ val_recombee +">Use Recombee</a></td>");
+			pw.print("<td><a class='btnbuy btn-cust-style' href="+ val_python +">Use Surprise</a></td>");
+			pw.print("<td><a class='btnbuy btn-cust-style' href="+ val_recombee +">Use Recombee</a></td>");
 			pw.print("</table>");
 			pw.print("</div></div></div>");
 
